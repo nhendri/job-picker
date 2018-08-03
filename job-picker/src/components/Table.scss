@@ -1,0 +1,117 @@
+@mixin tableRow() {
+    padding: 3% 0 3% 2%;
+}
+
+@mixin hoverTransition($target) {
+    transition: $target 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@mixin noSelectText() {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin ascDescArrows($order) {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    @if $order==asc {
+        border-top: 2px solid;
+        border-left: 2px solid;
+    }
+    @else if $order==desc {
+        border-bottom: 2px solid;
+        border-right: 2px solid;
+    }
+    @else {
+        //border: 2px solid rgba(123, 123, 123, 0.25);
+    }
+}
+
+.cuTable {
+    //background: rgba(125, 125, 125, 0.3);
+    //box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.2);
+    .cuTitleRow {
+        @include noSelectText();
+        @include tableRow();
+        font-weight: bold;
+        cursor: pointer;
+        .cuTitleCol {
+            &:after {
+                @include ascDescArrows(neither);
+            }
+        }
+        .cuTitleCol.asc {
+            &:after {
+                @include ascDescArrows(asc);
+            }
+        }
+        .cuTitleCol.desc {
+            &:after {
+                @include ascDescArrows(desc);
+            }
+        }
+    }
+    .cuContentRow {
+        @include tableRow();
+        cursor: default;
+        background-color: inherit;
+        @include hoverTransition(background-color);
+        .cuLeftSide {
+            cursor: pointer !important;
+            letter-spacing: default;
+            @include hoverTransition(letter-spacing);
+        }
+    }
+    .cuContentRow:not(:first-child) {
+        border-top: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    .cuContentRow:hover {
+        background-color: rgba(123, 123, 123, 0.1);
+        @include hoverTransition(background-color);
+        .cuLeftSide {
+            letter-spacing: 1px;
+            @include hoverTransition(letter-spacing);
+        }
+    }
+    .selected {
+        background-color: rgba(123, 123, 123, 0.75) !important;
+    }
+    .cuNoDataRow {
+        font-weight: bold;
+        color: red;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .cuTable.fade {
+        opacity: 0.7;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .cuTitleRow {
+        display: none;
+    }
+    .cuContentRow {
+        .cuLeftSide {
+            font-weight: bold;
+        }
+        .cuMiddle {
+            display: none;
+        }
+    }
+    .cuContentRow:nth-child(2) {
+        border-top: none !important;
+    }
+    .cuTable.fade {
+        display: none;
+    }
+}

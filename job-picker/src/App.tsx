@@ -1,13 +1,15 @@
 import * as React from 'react';
 import './App.scss';
 
-import { IJobInterface } from './components/IJobInterface';
+import { IJobInterface } from './components/interfaces/IJobInterface';
 
 import JobViewer from './components/JobViewer';
 
-import logo from './logo.svg';
-
 import { jobsData } from './fakeData/fakeData';
+
+export interface IAppProps {
+  appTitle: string | null;
+}
 
 interface IAppState {
   isLoading: boolean;
@@ -18,9 +20,9 @@ interface IAppState {
   data?: Array<IJobInterface>;
 };
 
-class App extends React.Component<any, IAppState> {
+class App extends React.Component<IAppProps, IAppState> {
 
-  constructor(props: any) {
+  constructor(props: IAppProps) {
     super(props);
     this.state = {
       isLoading: true,
@@ -32,6 +34,21 @@ class App extends React.Component<any, IAppState> {
     };
   }
 
+  //non lifecycle methods
+
+  protected getData(): Promise<{}> {
+    return new Promise((resolve: any, reject: any) => {
+      let AThingIsTrue, AThingIsFalse;
+      if (AThingIsTrue) {
+        resolve([]);
+      }
+      if (AThingIsFalse) {
+        reject({ error: 'anError' });
+      }
+    });
+  }
+
+  //lifecycle methods
   public componentDidMount(): void {
     const loadedAppState: IAppState = {
       ...this.state,
@@ -46,34 +63,20 @@ class App extends React.Component<any, IAppState> {
   }
 
   public render(): JSX.Element {
-    if (this.state.isLoading) {
-      return (
-        <div className='cuLoading'>LOADING</div>
-      )
-    };
-    if (this.state.error.isErrored) {
-      return (
-        <div className='cuError'>{this.state.error.isErrored}</div>
-      )
-    };
-    if (this.state.data) {
-      return (
-        <div className='App'>
-          <JobViewer data={this.state.data} />
-        </div>
-      )
-    }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-       </p>
+      <div className='ms-Grid cuAppContainer' dir='ltr'>
+        <div className='ms-Grid-row cuAppTitleRow'>
+          <div className='ms-Grid-col ms-sm12'><h2>{this.props.appTitle}</h2></div>
+        </div>
+        <div className='ms-Grid-row cuAppContentRow'>
+          <div className='ms-Grid-col ms-sm12'>
+            {this.state.isLoading ? <div className='cuLoading'>LOADING</div> : null}
+            {this.state.error.isErrored ? <div className='cuError'>{this.state.error.isErrored}</div> : null}
+            {this.state.data ? <JobViewer data={this.state.data} /> : null}
+          </div>
+        </div>
       </div>
-    );
+    )
   }
 }
 export default App;

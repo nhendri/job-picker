@@ -1,0 +1,62 @@
+@mixin fixPosition($width) {
+    max-width: $width;
+    width: 100%;
+    height: auto;
+}
+
+.cuMenu {
+    //border: 1px solid rgba(0, 0, 0, 0.5);
+    //background-color: rgba(123, 123, 123, 0.35);
+    text-align: center;
+    padding: 3%;
+    .ms-Grid-row {
+        padding: 3%;
+    }
+    .cuMenuChoiceRow {
+        text-align: left;
+        .cuMenuOptions {
+            select {
+                box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+    button {
+        outline: none;
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
+        padding: 5%;
+        margin: 3%;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        background-color: rgba(123, 123, 123, 0.1);
+    }
+    button:hover {
+        background-color: rgba(123, 123, 123, 0.15) !important;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .cuMenu {
+        position: fixed;
+        top: 110px;
+    }
+}
+
+@media screen and (min-width: 1001px) {
+    .cuMenu {
+        @include fixPosition(200px);
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1000px) {
+    .cuMenu {
+        @include fixPosition(120px);
+        img {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .cuMenu {
+        position: relative !important;
+    }
+}
