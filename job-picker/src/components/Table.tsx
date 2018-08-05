@@ -112,7 +112,8 @@ export default class Table extends React.Component<ITableProps, ITableState>{
                     left: 'There are no matching results!',
                     mid: null,
                     right: null
-                }
+                },
+                sorting: {}
             }
             arrRows.push(<TableRow key='noDataRow' {...tableDataRowNoDataProps} />);
         }
