@@ -104,6 +104,17 @@ export default class Table extends React.Component<ITableProps, ITableState>{
                 };
                 arrRows.push(<TableRow key={ind}{...tableDataRowProps} />);
             });
+        } else {
+            const tableDataRowNoDataProps: ITableRowProps = {
+                header: false,
+                rowClass: 'cuNoDataRow',
+                rowValues: {
+                    left: 'There are no matching results!',
+                    mid: null,
+                    right: null
+                }
+            }
+            arrRows.push(<TableRow key='noDataRow' {...tableDataRowNoDataProps} />);
         }
         return arrRows;
     }

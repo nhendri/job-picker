@@ -5,7 +5,7 @@ export interface ITableRowProps {
     header: boolean;
     rowClass?: string;
     rowID?: string;
-    sorting: {
+    sorting?: {
         sortedCol?: string | null;
         sortDir?: string | null;
     };
@@ -14,7 +14,7 @@ export interface ITableRowProps {
         mid: string | number | null;
         right: string | number | null;
     };
-    rowEvent: (e: React.SyntheticEvent) => void;
+    rowEvent?: (e: React.SyntheticEvent) => void;
 }
 
 //component
