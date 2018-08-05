@@ -1,0 +1,67 @@
+@mixin fixPosition($width) {
+    max-width: $width;
+    width: 100%;
+    height: auto;
+}
+
+$borderStyle: 1px solid black;
+.cuJobSummary {
+    text-align: center; //background-color: rgba(125, 125, 125, 0.35);
+    padding: 3%;
+    .cuCloseButton {
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-align: right;
+        cursor: pointer;
+    }
+    .cuContentRow {
+        padding: 2% 0 2% 0;
+    }
+    .cuDepartment {
+        border-right: $borderStyle;
+        border-left: $borderStyle;
+    }
+    .cuManager {
+        border-right: $borderStyle;
+        border-left: $borderStyle;
+    }
+    .cuDescription {
+        //border-bottom: 1px solid black;
+    }
+    img {
+        max-width: 100%;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .cuJobSummary {
+        position: fixed;
+    }
+}
+
+@media screen and (min-width: 1001px) {
+    .cuJobSummary {
+        @include fixPosition(200px);
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1000px) {
+    .cuJobSummary {
+        @include fixPosition(120px);
+        img {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .cuJobSummary {
+        position: relative !important;
+    }
+}
