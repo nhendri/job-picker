@@ -37,7 +37,7 @@ const JobSummary : React.SFC < IJobSummaryProps > = (props : IJobSummaryProps) =
             </div>
             <div className='ms-Grid-row cuCity'>
                 <div className='ms-Grid-col ms-sm12'>{`${props.selectedJob.location.city}${props.selectedJob.location.branch != 0
-                        ? ` Br(${props.selectedJob.location.branch})`
+                        ? ` (Br ${props.selectedJob.location.branch})`
                         : ''}`}</div>
             </div>
             <div className='ms-Grid-row cuDepartment'>
@@ -46,8 +46,7 @@ const JobSummary : React.SFC < IJobSummaryProps > = (props : IJobSummaryProps) =
             </div>
             <div className='ms-Grid-row cuManager'>
                 <div className='ms-Grid-col ms-sm12'>
-                    <em>Manager</em>:
-                    <a
+                    <em>Manager</em>: <a
                         href={`mailto:${props.selectedJob.contact.email}?subject=[JobInqury] regarding open ${props.selectedJob.title} position`}>{props.selectedJob.contact.name}</a>
                 </div>
             </div>

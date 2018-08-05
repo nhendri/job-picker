@@ -115,10 +115,25 @@ export default class JobViewer extends React.Component<IJobViewerProps,
         let target = e.target as HTMLInputElement;
         let parentOfTarget = target.parentElement as HTMLInputElement;
         console.log(parentOfTarget.id);
+        //const jobSelected: IJobInterface = this.props.data.filter(el => el.guid === parentOfTarget.id)[0];
+        //console.log(jobSelected);
+        this.setState({...this.state, jobSummaryState: {
+            ...this.state.jobSummaryState,
+            visible: true,
+            selectedJob: this.props.data.filter(el => el.guid === parentOfTarget.id)[0],
+            selectedJobID: parentOfTarget.id
+        }})
     }
 
     protected jobSummaryCloseEvent(e: React.SyntheticEvent): void {
-        console.log(e);
+        this.setState({
+            ...this.state, jobSummaryState: {
+                ...this.state.jobSummaryState,
+                visible: false,
+                selectedJob: testJobData,
+                selectedJobID: null
+            }
+        })
     }
 
     //lifecycle methods
