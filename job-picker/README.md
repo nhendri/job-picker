@@ -3,7 +3,7 @@ The job viewer is a simple interface which takes a json data object which repres
 
 #### Requirements
 * The data is represented in json notation - the final version of this will be built on SharePoint, with a SharePoint list API serving as the data source
-* The list will never have more than 100 entries (ehhhhhhh....)
+* Expect list size to be under 500
 * The entire interface will be responsive
 * The jobs will be displayed in a simple table
 
