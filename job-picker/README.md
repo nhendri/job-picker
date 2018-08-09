@@ -30,3 +30,20 @@ This simple job viewer displays a list of internal job postings and provides for
 See [<code>feature files</code>](./requirements/) (Actual feature writing pending. Yes, this is a bad practice, I'm a slacker..)
 
 ## Part Two: Manager Management
+#### Business Requirements
+* A manager must have an interface for entering new jobs for approval, and for flagging jobs as removable
+* A manager must be able to fill out a new job form which includes a list of available departments + approved job titles
+    * The following fields must be present:
+        * Job ID (auto)
+        * Job Title (selected from list)
+        * Job Department (selected from list)
+        * Job Location (auto)
+        * Job Description (auto)
+        * Job Notes (entry)
+        * Length of posting (entry)
+
+#### Designer/Layout Requirements
+(coming soon)
+
+#### Technical Specification
+(coming soon)
