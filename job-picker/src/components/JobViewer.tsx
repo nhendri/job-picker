@@ -3,7 +3,6 @@ import * as React from 'react';
 import { IJobInterface, testJobData } from './interfaces/IJobInterface';
 import './JobViewer.scss';
 import { JobSummaryAnimated, IJobSummaryProps } from './SFComponents/JobSummary';
-//JobSummary,
 import TableFilters, { IMenuOptions, ITableFilterProps } from './SFComponents/TableFilters';
 import Table, { ITableProps } from './Table';
 

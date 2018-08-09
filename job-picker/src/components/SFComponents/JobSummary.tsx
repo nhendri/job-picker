@@ -119,6 +119,9 @@ class JobSummaryAnimated extends React.Component<IJobSummaryProps, IJobSummaryAn
                 <div className='ms-Grid-row cuDescription'>
                     <div className='ms-Grid-col ms-sm12'>{this.props.selectedJob.description}</div>
                 </div>
+                <div className='ms-Grid-row cuDescription'>
+                    <div className='ms-Grid-col ms-sm12'>JobID: {this.props.selectedJob.guid}</div>
+                </div>
             </div>
         )
     }

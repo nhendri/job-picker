@@ -5,8 +5,6 @@ import { IJobInterface } from './components/interfaces/IJobInterface';
 
 import JobViewer from './components/JobViewer';
 
-import { jobsData } from './fakeData/fakeData';
-
 export interface IAppProps {
   appTitle: string | null;
 }
@@ -36,30 +34,56 @@ class App extends React.Component<IAppProps, IAppState> {
 
   //non lifecycle methods
 
-  protected getData(): Promise<{}> {
-    return new Promise((resolve: any, reject: any) => {
-      let AThingIsTrue, AThingIsFalse;
-      if (AThingIsTrue) {
-        resolve([]);
+  protected returnJobData(): void {
+    fetch('http://localhost:16121/jobs').then(
+      result => {
+        return result.json();
       }
-      if (AThingIsFalse) {
-        reject({ error: 'anError' });
+    ).then(
+      result => {
+        if (!result.length) {
+          const loadedAppState: IAppState = {
+            ...this.state,
+            isLoading: false,
+            error: {
+              isErrored: true,
+              errorMsg: 'no data! also, please style me at some point to be a useful (but comforting) error message...'
+            },
+            data: undefined
+          };
+          this.setState({ ...loadedAppState });
+        } else {
+          const loadedAppState: IAppState = {
+            ...this.state,
+            isLoading: false,
+            error: {
+              isErrored: false,
+              errorMsg: undefined
+            },
+            data: result
+          };
+          this.setState({ ...loadedAppState });
+        }
       }
-    });
+    ).catch(
+      error => {
+        const loadedAppState: IAppState = {
+          ...this.state,
+          isLoading: false,
+          error: {
+            isErrored: true,
+            errorMsg: `Error Text: "${error}" - I should create, like, error logging for this...`
+          },
+          data: undefined
+        };
+        this.setState({ ...loadedAppState });
+      }
+    )
   }
 
   //lifecycle methods
   public componentDidMount(): void {
-    const loadedAppState: IAppState = {
-      ...this.state,
-      isLoading: false,
-      error: {
-        isErrored: false,
-        errorMsg: undefined
-      },
-      data: jobsData.jobs
-    };
-    this.setState({ ...loadedAppState });
+    this.returnJobData();
   }
 
   public render(): JSX.Element {
@@ -71,7 +95,7 @@ class App extends React.Component<IAppProps, IAppState> {
         <div className='ms-Grid-row cuAppContentRow'>
           <div className='ms-Grid-col ms-sm12'>
             {this.state.isLoading ? <div className='cuLoading'>LOADING</div> : null}
-            {this.state.error.isErrored ? <div className='cuError'>{this.state.error.isErrored}</div> : null}
+            {this.state.error.isErrored ? <div className='cuError'>{this.state.error.errorMsg}</div> : null}
             {this.state.data ? <JobViewer data={this.state.data} /> : null}
           </div>
         </div>
