@@ -8,6 +8,7 @@ const testTableFilterProps: ITableFilterProps = {
         arrDeptDropdown: ['test3', 'test4']
     },
     filters: {
+        defaultText: '--all--',
         applied: false,
         city: 'test1',
         dept: 'test2'

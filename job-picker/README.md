@@ -1,18 +1,32 @@
 # Job Viewer
-The job viewer is a simple interface which takes a json data object which represents a set of available jobs and displays it in a simple interface.
+This simple job viewer displays a list of internal job postings and provides for the user to sort and filter the list by department and location. It also provides for the user to view more details regarding individual job postings.
 
-#### Requirements
-* The data is represented in json notation - the final version of this will be built on SharePoint, with a SharePoint list API serving as the data source
-* Expect list size to be under 500
-* The entire interface will be responsive
-* The jobs will be displayed in a simple table
+## Part One: The Final View
+#### Business Requirements
+
+* The jobs list must include the job title, the job department, and the job location
 
 | Title       | Department       | City       |
 | ----------- | ---------------- | ---------- |
-| Job TItle 1 | Job Department 1 | Job City 1 |
-| Job TItle 2 | Job Department 2 | Job City 2 |
+| Job Title 1 | Job Department 1 | Job City 1 |
+| Job Title 2 | Job Department 2 | Job City 2 |
 
-* The table will be sortable by each of the column headers
-* The table will have some sort of visual highlight on-hover to indicate the currently active selection
-* The "Title" column will be clickable to show more details about a selected job
+* The jobs list must be sortable by each of the columns
+* Additional details about an individual job must be available
+
+| Title       | Department       | Location   | Description       | Manager Name       | Manager Email |
+| ----------- | ---------------- | ---------- | ----------------- | ------------------ | ------------- |
+| Job Title 1 | Job Department 1 | Job City 1 | Job description 1 | Job Manager Name 1 | Job Email 1   |
+
+* The user must be able to directly contact the hiring manager
+* The additional details must be supported by an image that helps identify or define the hiring department or location
+
+#### Designer/Layout Requirements
+* The table will have a visual highlight on-hover to indicate the currently active selection
 * The table will have a second visual highlight on-select to indicate the currently viewed selection
+* The interface must be responsive
+
+#### Technical Specification
+See [<code>feature files</code>](./requirements/) (Actual feature writing pending. Yes, this is a bad practice, I'm a slacker..)
+
+## Part Two: Manager Management

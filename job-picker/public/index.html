@@ -1,16 +1,44 @@
-<link rel="stylesheet" href="./fabric.min.css">
-<noscript style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1040656/constructionTapeBackground.gif');background-repeat: no-repeat;position: absolute;border: 1px solid black;background-color: yellow;padding: 1%;font-weight: bold;top: 350px;left: 500px;transform: rotate(35deg);">
-  <span style="background-color: rgba(255, 255, 255, 0.75);">You appear to have Javascript disabled. Please enable to view this app! Thanks :)</span>
-</noscript>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="ms-Grid">
-  <div class="ms-Grid-row">
-    <div class="ms-Grid-col ms-sm12">
-      <div id="spJobPickerRoot"></div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <link rel="stylesheet" href="./fabric.min.css">
+  <!-- <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.0/css/fabric.min.css"> -->
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>Job Picker</title>
+</head>
+
+<body>
+  <noscript style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1040656/constructionTapeBackground.gif');background-repeat: no-repeat;position: absolute;border: 1px solid black;background-color: yellow;padding: 1%;font-weight: bold;top: 350px;left: 500px;transform: rotate(35deg);">
+    <span style="background-color: rgba(255, 255, 255, 0.75);">You appear to have Javascript disabled. Please enable to view this app! Thanks :)</span>
+  </noscript>
+
+  <div class="ms-Grid">
+    <div class="ms-Grid-row">
+      <div class="ms-Grid-col ms-sm12">
+        <div id="spJobPickerRoot"></div>
+      </div>
     </div>
   </div>
-</div>
-<!--
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -20,3 +48,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+</body>
+
+</html>

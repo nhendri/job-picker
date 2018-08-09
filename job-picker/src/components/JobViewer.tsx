@@ -2,7 +2,8 @@ import * as React from 'react';
 //import statements
 import { IJobInterface, testJobData } from './interfaces/IJobInterface';
 import './JobViewer.scss';
-import JobSummary, { IJobSummaryProps } from './SFComponents/JobSummary';
+import { JobSummaryAnimated, IJobSummaryProps } from './SFComponents/JobSummary';
+//JobSummary,
 import TableFilters, { IMenuOptions, ITableFilterProps } from './SFComponents/TableFilters';
 import Table, { ITableProps } from './Table';
 
@@ -117,12 +118,14 @@ export default class JobViewer extends React.Component<IJobViewerProps,
         console.log(parentOfTarget.id);
         //const jobSelected: IJobInterface = this.props.data.filter(el => el.guid === parentOfTarget.id)[0];
         //console.log(jobSelected);
-        this.setState({...this.state, jobSummaryState: {
-            ...this.state.jobSummaryState,
-            visible: true,
-            selectedJob: this.props.data.filter(el => el.guid === parentOfTarget.id)[0],
-            selectedJobID: parentOfTarget.id
-        }})
+        this.setState({
+            ...this.state, jobSummaryState: {
+                ...this.state.jobSummaryState,
+                visible: true,
+                selectedJob: this.props.data.filter(el => el.guid === parentOfTarget.id)[0],
+                selectedJobID: parentOfTarget.id
+            }
+        })
     }
 
     protected jobSummaryCloseEvent(e: React.SyntheticEvent): void {
@@ -153,6 +156,7 @@ export default class JobViewer extends React.Component<IJobViewerProps,
         const tableFilterProps: ITableFilterProps = {
             dropdownChoices: this.state.menuState.menuOptions,
             filters: {
+                defaultText: this.noSelection,
                 applied: this.state.menuState.filters.applied,
                 city: this.state.menuState.filters.selectedCity,
                 dept: this.state.menuState.filters.selectedDept
@@ -187,7 +191,7 @@ export default class JobViewer extends React.Component<IJobViewerProps,
                 <div className='ms-Grid-row'>
                     <div
                         className={`ms-Grid-col ms-sm12 ms-lg${cols[0]} ms-xl${cols[0]} ms-xxl${cols[0]} cuJobPickerLeft`}>{this.state.jobSummaryState.visible
-                            ? <JobSummary {...jobSummaryProps} />
+                            ? <JobSummaryAnimated {...jobSummaryProps} />
                             : <TableFilters {...tableFilterProps} />}</div>
                     <div
                         className={`ms-Grid-col ms-sm12 ms-lg${cols[1]} ms-xl${cols[1]} ms-xxl${cols[1]} cuJobPickerRight`}><Table {...tableProps} /></div>

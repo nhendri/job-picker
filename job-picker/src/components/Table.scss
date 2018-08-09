@@ -17,7 +17,7 @@
 @mixin ascDescArrows($order) {
     content: '';
     position: absolute;
-    top: 0px;
+    top: 5px;
     left: -15px;
     width: 10px;
     height: 10px;
@@ -31,7 +31,8 @@
         border-right: 2px solid;
     }
     @else {
-        //border: 2px solid rgba(123, 123, 123, 0.25);
+        /* border-top: 2px dashed rgba(123, 123, 123, 0.25);
+border-bottom: 2px dashed rgba(123, 123, 123, 0.25); */
     }
 }
 
