@@ -35,7 +35,7 @@ class App extends React.Component<IAppProps, IAppState> {
   //non lifecycle methods
 
   protected returnJobData(): void {
-    fetch('http://localhost:16121/jobs').then(
+    fetch('https://my-json-server.typicode.com/nhendri/typicodeJsonPlaceholder/jobs').then(
       result => {
         return result.json();
       }
