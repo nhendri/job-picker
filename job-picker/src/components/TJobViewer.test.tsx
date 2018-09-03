@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import JobViewer, { IJobViewerProps } from './JobViewer';
 import { testJobData } from './interfaces/IJobInterface';
+import JobViewer, { IJobViewerProps } from './JobViewer';
+
 
 const testData: IJobViewerProps = {
     data: [testJobData]

@@ -3,8 +3,8 @@ import * as React from 'react';
 import './TableFilters.scss';
 
 export interface IMenuOptions {
-    arrCityDropdown: Array<string>;
-    arrDeptDropdown: Array<string>;
+    arrCityDropdown: string[];
+    arrDeptDropdown: string[];
 }
 
 export interface ITableFilterProps {
@@ -20,7 +20,7 @@ export interface ITableFilterProps {
 }
 
 const TableFilters: React.SFC<ITableFilterProps> = (props: ITableFilterProps) => {
-    const cols: Array<number> = [4, 8];
+    const cols: number[] = [4, 8];
     return (
         <div className='cuMenu'>
             <div className='ms-Grid'>

@@ -5,17 +5,17 @@ import TableRow, { ITableRowProps } from './TableRow';
 const tableRowProps: ITableRowProps = {
     header: true,
     rowClass: 'cuRowClass',
+    rowEvent: (e: React.SyntheticEvent) => console.log(e),
     rowID: 'cuRowID',
-    sorting: {
-        sortedCol: null,
-        sortDir: null
-    },
     rowValues: {
         left: null,
         mid: null,
         right: null
-    },
-    rowEvent: (e: React.SyntheticEvent) => console.log(e)
+    },    
+    sorting: {
+        sortDir: null,
+        sortedCol: null                
+    }    
 };
 
 it('renders without crashing', () => {

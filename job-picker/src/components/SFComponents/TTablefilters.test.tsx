@@ -7,13 +7,13 @@ const testTableFilterProps: ITableFilterProps = {
         arrCityDropdown: ['test1', 'test2'],
         arrDeptDropdown: ['test3', 'test4']
     },
+    dropdownEvent: (e: React.SyntheticEvent) => console.log(e),
     filters: {
-        defaultText: '--all--',
         applied: false,
         city: 'test1',
+        defaultText: '--all--',                
         dept: 'test2'
-    },
-    dropdownEvent: (e: React.SyntheticEvent) => console.log(e),
+    },    
     resetEvent: (e: React.SyntheticEvent) => console.log(e)
 };
 

@@ -36,7 +36,7 @@ const JobSummary: React.SFC<IJobSummaryProps> = (props: IJobSummaryProps) => {
                 </div>
             </div>
             <div className='ms-Grid-row cuCity'>
-                <div className='ms-Grid-col ms-sm12'>{`${props.selectedJob.location.city}${props.selectedJob.location.branch != 0
+                <div className='ms-Grid-col ms-sm12'>{`${props.selectedJob.location.city}${props.selectedJob.location.branch !== 0
                     ? ` (Br ${props.selectedJob.location.branch})`
                     : ''}`}</div>
             </div>
@@ -67,18 +67,7 @@ class JobSummaryAnimated extends React.Component<IJobSummaryProps, IJobSummaryAn
         this.state = {
             isLoaded: false
         };
-    }
-
-    protected returnImg(): string {
-        switch (this.props.selectedJob.department) {
-            case 'Customer Service':
-                return 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1040656/branch_img.jpg';
-            case 'Information Services':
-                return 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1040656/computer_img.jpg';
-            default:
-                return 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1040656/corporate_img.jpg';
-        }
-    }
+    };
 
     public componentDidMount(): void {
         setTimeout(() => this.setState({ ...this.state, isLoaded: true }), 50);
@@ -102,7 +91,7 @@ class JobSummaryAnimated extends React.Component<IJobSummaryProps, IJobSummaryAn
                     </div>
                 </div>
                 <div className='ms-Grid-row cuCity'>
-                    <div className='ms-Grid-col ms-sm12'>{`${this.props.selectedJob.location.city}${this.props.selectedJob.location.branch != 0
+                    <div className='ms-Grid-col ms-sm12'>{`${this.props.selectedJob.location.city}${this.props.selectedJob.location.branch !== 0
                         ? ` (Br ${this.props.selectedJob.location.branch})`
                         : ''}`}</div>
                 </div>
@@ -125,6 +114,17 @@ class JobSummaryAnimated extends React.Component<IJobSummaryProps, IJobSummaryAn
             </div>
         )
     }
+
+    protected returnImg(): string {
+        switch (this.props.selectedJob.department) {
+            case 'Customer Service':
+                return 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1040656/branch_img.jpg';
+            case 'Information Services':
+                return 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1040656/computer_img.jpg';
+            default:
+                return 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1040656/corporate_img.jpg';
+        }
+    }    
 }
 
 export default JobSummary;

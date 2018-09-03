@@ -15,7 +15,7 @@ interface IAppState {
     isErrored: boolean;
     errorMsg?: string;
   };
-  data?: Array<IJobInterface>;
+  data?: IJobInterface[];
 };
 
 class App extends React.Component<IAppProps, IAppState> {
@@ -23,65 +23,17 @@ class App extends React.Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
     super(props);
     this.state = {
-      isLoading: true,
+      data: undefined,
       error: {
-        isErrored: false,
-        errorMsg: undefined
+        errorMsg: undefined,
+        isErrored: false        
       },
-      data: undefined
+      isLoading: true,
+      
     };
   }
 
-  //non lifecycle methods
-
-  protected returnJobData(): void {
-    fetch('https://my-json-server.typicode.com/nhendri/typicodeJsonPlaceholder/jobs').then(
-      result => {
-        return result.json();
-      }
-    ).then(
-      result => {
-        if (!result.length) {
-          const loadedAppState: IAppState = {
-            ...this.state,
-            isLoading: false,
-            error: {
-              isErrored: true,
-              errorMsg: 'no data! also, please style me at some point to be a useful (but comforting) error message...'
-            },
-            data: undefined
-          };
-          this.setState({ ...loadedAppState });
-        } else {
-          const loadedAppState: IAppState = {
-            ...this.state,
-            isLoading: false,
-            error: {
-              isErrored: false,
-              errorMsg: undefined
-            },
-            data: result
-          };
-          this.setState({ ...loadedAppState });
-        }
-      }
-    ).catch(
-      error => {
-        const loadedAppState: IAppState = {
-          ...this.state,
-          isLoading: false,
-          error: {
-            isErrored: true,
-            errorMsg: `Error Text: "${error}" - I should create, like, error logging for this...`
-          },
-          data: undefined
-        };
-        this.setState({ ...loadedAppState });
-      }
-    )
-  }
-
-  //lifecycle methods
+  // lifecycle methods
   public componentDidMount(): void {
     this.returnJobData();
   }
@@ -102,5 +54,54 @@ class App extends React.Component<IAppProps, IAppState> {
       </div>
     )
   }
+
+  // non lifecycle methods
+  protected returnJobData(): void {
+    fetch('https://my-json-server.typicode.com/nhendri/typicodeJsonPlaceholder/jobs').then(
+      result => {
+        return result.json();
+      }
+    ).then(
+      result => {
+        if (!result.length) {
+          const loadedAppState: IAppState = {
+            ...this.state,
+            data: undefined,
+            error: {
+              errorMsg: 'no data! also, please style me at some point to be a useful (but comforting) error message...',
+              isErrored: true              
+            },
+            isLoading: false
+            
+          };
+          this.setState({ ...loadedAppState });
+        } else {
+          const loadedAppState: IAppState = {
+            ...this.state,
+            data: result,
+            error: {
+              errorMsg: undefined,
+              isErrored: false              
+            },
+            isLoading: false                       
+          };
+          this.setState({ ...loadedAppState });
+        }
+      }
+    ).catch(
+      error => {
+        const loadedAppState: IAppState = {
+          ...this.state,
+          data: undefined,
+          error: {
+            errorMsg: `Error Text: "${error}" - I should create, like, error logging for this...`,
+            isErrored: true            
+          },
+          isLoading: false          
+        };
+        this.setState({ ...loadedAppState });
+      }
+    )
+  }  
 }
 export default App;

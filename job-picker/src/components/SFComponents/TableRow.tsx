@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-//Exported default component props
+// Exported default component props
 export interface ITableRowProps {
     header: boolean;
     rowClass?: string;
@@ -17,9 +17,9 @@ export interface ITableRowProps {
     rowEvent?: (e: React.SyntheticEvent) => void;
 }
 
-//component
+// component
 const TableRow: React.SFC<ITableRowProps> = (props: ITableRowProps) => {
-    const cols: Array<number> = [5, 4, 3];
+    const cols: number[] = [5, 4, 3];
     return (
         <div className={props.rowClass}>
             <div className='ms-Grid-row' id={props.rowID || ''} onClick={props.header ? undefined : props.rowEvent}>
@@ -33,4 +33,4 @@ const TableRow: React.SFC<ITableRowProps> = (props: ITableRowProps) => {
 
 export default TableRow;
 
-//${props.sorting.sortedCol === props.header[0] ? props.sorting.sortDir : ''}
+// ${props.sorting.sortedCol === props.header[0] ? props.sorting.sortDir : ''}

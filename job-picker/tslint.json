@@ -3,7 +3,11 @@
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
-      "node_modules/**/*.ts"
+      "fakeData/**/*.ts",
+      "node_modules/**/*.ts"      
     ]
+  },
+  "rules":{
+    "no-console":false
   }
 }

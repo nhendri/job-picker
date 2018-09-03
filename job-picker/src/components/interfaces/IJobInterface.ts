@@ -37,21 +37,21 @@ export interface IJobEntrySomeDay {
     jobID: string;
 }
 
-const testJobData: IJobInterface = {
-    title: 'Test Job1',
-    location: {
-        city: 'Test City',
-        branch: 0
+const testJobData: IJobInterface = {    
+    contact: {
+        email: 'Tester@tester.test',
+        name: 'Tester',
+        phone: '123-456-7890'        
     },
     department: 'Test Department',
-    fullTime: true,
     description: 'A Test Job',
-    contact: {
-        name: 'Tester',
-        phone: '123-456-7890',
-        email: 'Tester@tester.test'
+    fullTime: true,
+    guid: '57380e0d-bab1-427d-a48b-085e8adf74af',    
+    location: {
+        branch: 0,
+        city: 'Test City'        
     },
-    guid: '57380e0d-bab1-427d-a48b-085e8adf74af'
+    title: 'Test Job1'
 };
 
 export { testJobData };
