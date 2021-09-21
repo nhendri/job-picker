@@ -5,7 +5,7 @@ orbs:
   node: circleci/node@4.1
   
 general:
-  build_dir: job-picker
+  app_dir: job-picker
 
 workflows:
   sample:
