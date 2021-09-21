@@ -3,6 +3,9 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.1
+  
+general:
+  build_dir: job-picker
 
 workflows:
   sample:
