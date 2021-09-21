@@ -2,14 +2,9 @@
 version: 2.1
 
 orbs:
-  python: dialogue/python@2.17.2
-  
+  node: circleci/node@4.1
 
-workflows:
-  sample:
-    jobs:
-      - node/test:
-          version: '15.1'
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
+jobs:
+  build:
+    steps:
+      - run: yum install python3
